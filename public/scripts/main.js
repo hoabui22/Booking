@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedSeatsString = selectedSeatsNames.join(', ');
 
         selectedSeatText.innerText = selectedSeatsCount;
-        totalPriceText.innerText = selectedSeatsCount * 200; 
+        totalPriceText.innerText = selectedSeatsCount * 200000; 
 
-        const ticketPrice = selectedSeatsCount * 200; 
+        const ticketPrice = selectedSeatsCount * 200000; 
         ticketPriceText.innerText = ticketPrice;
 
         const transactionFee = 0; 
@@ -80,46 +80,44 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Vui lòng chấp nhận điều khoản và điều kiện trước khi tiếp tục.');
         }
         const selectedSeats = document.querySelectorAll('.seat.selected');
-const selectedSeatsCount = selectedSeats.length;
+    const selectedSeatsCount = selectedSeats.length;
 
-const ticketPrice = selectedSeatsCount * 200; 
-const transactionFee = 0; 
-const totalAmount = ticketPrice + transactionFee;
+    const ticketPrice = selectedSeatsCount * 200; 
+    const transactionFee = 0; 
+    const totalAmount = ticketPrice + transactionFee;
 
-const fullName = document.getElementById('fullName').value;
-const phoneNumber = document.getElementById('phoneNumber').value;
-const email = document.getElementById('email').value;
+    const fullName = document.getElementById('fullName').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
 
-var form = document.createElement('form');
-form.method = 'POST';
-form.action = '/bookings';
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/';
 
-// Create hidden input fields and set their values
-function addHiddenInput(name, value) {
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-}
+    // Create hidden input fields and set their values
+    function addHiddenInput(name, value) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
 
-// Add selected seats as an array of strings
-selectedSeats.forEach((seat, index) => {
-    addHiddenInput(`selectedSeats[${index}]`, seat.textContent); // Assuming seat text content holds the seat identifier
-});
-
-// Add total amount
-addHiddenInput('totalPrice', totalAmount);
-
-// Add fullName, phoneNumber, and email
-addHiddenInput('fullName', fullName);
-addHiddenInput('phoneNumber', phoneNumber);
-addHiddenInput('email', email);
-
-// Append form to document body and submit it
-document.body.appendChild(form);
-form.submit();
+    // Add selected seats as an array of strings
+    selectedSeats.forEach((seat, index) => {
+        addHiddenInput(`selectedSeats[${index}]`, seat.textContent); // Assuming seat text content holds the seat identifier
     });
-});
 
+    // Add total amount
+    addHiddenInput('totalPrice', totalAmount);
 
+    // Add fullName, phoneNumber, and email
+    addHiddenInput('fullName', fullName);
+    addHiddenInput('phoneNumber', phoneNumber);
+    addHiddenInput('email', email);
+
+    // Append form to document body and submit it
+    document.body.appendChild(form);
+    form.submit();
+        });
+    });

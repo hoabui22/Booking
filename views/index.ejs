@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
+    <% if (success) { %>
+    <div class="alert alert-success">
+        <%= success %>
+    </div>
+    <% } %>
+    <% if (error) { %>
+    <div class="alert alert-danger">
+        <%= error %>
+    </div>
+    <% } %>
     <!-- Các ghế -->
     <div class="container">
         <div class="seat-rows">
@@ -14,77 +24,55 @@
             <div class="floor-label-l">
                 <h3>Tầng dưới</h3>
             <div class="row">
-                <div class="seat available">A1</div>
-                <div class="seat available">A2</div>
-                <div class="seat available">A3</div>
-                <div class="seat available">A4</div>
-                <div class="seat available">A5</div>
-                <div class="seat available">A6</div>
-                <div class="seat available">A7</div>
-                <div class="seat available">A8</div>
-                <div class="seat available">A9</div>
-                <div class="seat available">A10</div>
-                <div class="seat available">A11</div>
-                <div class="seat available">A12</div>
-                <div class="seat available">A13</div>
-                <div class="seat available">A14</div>
-                <div class="seat available">A15</div>
-                <div class="seat available">A16</div>
-                <div class="seat available">A17</div>
-                <div class="seat available">A18</div>
+            		<% Array.from({ length: 18 }, (_, i) => `A${i + 1}`).forEach(function(seat) { %>
+            			<% if (selectedSeats.includes(seat)) { %>
+                		<div class="seat occupied"><%= seat %></div>
+            			<% } else { %>
+            				<div class="seat available"><%= seat %></div>
+            			<% } %>
+                <% }); %>
             </div>
         </div>
             <!-- Dãy ghế tầng trên -->
             <div class="floor-label-r">
                 <h3>Tầng trên</h3>
             <div class="row">
-                <div class="seat available">B1</div>
-                <div class="seat available">B2</div>
-                <div class="seat available">B3</div>
-                <div class="seat available">B4</div>
-                <div class="seat available">B5</div>
-                <div class="seat available">B6</div>
-                <div class="seat available">B7</div>
-                <div class="seat available">B8</div>
-                <div class="seat available">B9</div>
-                <div class="seat available">B10</div>
-                <div class="seat available">B11</div>
-                <div class="seat available">B12</div>
-                <div class="seat available">B13</div>
-                <div class="seat available">B14</div>
-                <div class="seat available">B15</div>
-                <div class="seat available">B16</div>
-                <div class="seat available">B17</div>
-                <div class="seat available">B18</div>
+                <% Array.from({ length: 18 }, (_, i) => `B${i + 1}`).forEach(function(seat) { %>
+            			<% if (selectedSeats.includes(seat)) { %>
+                		<div class="seat occupied"><%= seat %></div>
+            			<% } else { %>
+            				<div class="seat available"><%= seat %></div>
+            			<% } %>
+                <% }); %>
             </div>
         </div>
-    </div>
-    <!-- Bảng chú thích màu -->
-    <div class="showcase">
-        <ul>
-            <li><span class="color occupied"></span> Đã bán</li>
-            <li><span class="color available"></span> Còn trống</li>
-            <li><span class="color selected"></span> Đang chọn</li>
-        </ul>
-    </div>
+        </div>
+        <!-- Bảng chú thích màu -->
+        <div class="showcase"> 
+            <ul>
+                <li><span class="color occupied"></span> Đã bán</li>
+                <li><span class="color available"></span> Còn trống</li>
+                <li><span class="color selected"></span> Đang chọn</li>
+            </ul>
+        </div>
     </div>
     <!-- Booking Details -->
     <div class="details-container">
         <!-- Booking Details -->
         <div class="booking-details">
-            <h2>Booking Details</h2>
-            <p>Trip: Rach Gia => Sai Gon</p>
-            <p>Departure Time: 04:00 09-05-2024</p>
-            <p>Số lượng ghế: <span id="countSeat">None</span></p>
+            <h2>Thông tin lượt đi</h2>
+            <p>Tuyến xe: Rach Gia => Sai Gon</p>
+            <p>Thời gian xuất bến: 04:00 09-05-2024</p>
+            <p>Số lượng ghế: <span id="countSeat">None</span> Ghế</p>
             <p>Số ghế: <span id="nameSeat">None</span></p>
-            <p>Total Price: $<span id="totalPrice">0</span></p>
+            <p>Tổng tiền lượt đi: <span id="totalPrice">0</span>đ</p>
         </div>
         <!-- Payment Details -->
         <div class="payment-details">
-            <h3>Payment Details</h3>
-            <p>Ticket Price: $<span id="ticketPrice">0</span></p>
-            <p>Transaction Fee: $<span id="transactionFee">0</span></p>
-            <p>Total Amount: $<span id="totalAmount">0</span></p>
+            <h3>Chi tiết giá</h3>
+            <p>Gía vé lượt đi: <span id="ticketPrice">0</span>đ</p>
+            <p>Phí thanh toán: <span id="transactionFee">0</span>đ</p>
+            <p>Tổng tiền: <span id="totalAmount">0</span>đ</p>
         </div>
     </div>
 
@@ -109,15 +97,15 @@
     </div>
     <!-- Pickup and Drop-off Information Form -->
     <div class="pickup-form">
-        <h2>Pickup and Drop-off Information</h2>
+        <h2>Thông tin đón trả</h2>
         <form action="/pickup-dropoff" method="POST">
-            <label for="pickupLocation">Pickup Location:</label><br>
+            <label for="pickupLocation">Điểm đón:</label><br>
             <select id="pickupLocation" name="pickupLocation" required>
                 <option value="Rach Gia">Rach Gia</option>
                 <option value="Another Location">Another Location</option>
             </select><br>
             <div class="dropoff">
-                <label for="dropoffLocation">Drop-off Location:</label><br>
+                <label for="dropoffLocation">Điểm trả:</label><br>
                     <select id="dropoffLocation" name="dropoffLocation" required>
                     <option value="Sai Gon">Sai Gon</option>
                     <option value="Another Location">Another Location</option>
@@ -127,7 +115,7 @@
         </form>
         <!-- Hiển thị giá tiền -->
         <div class="price-display">
-            Total Pay: $<span id="totalPay">0</span>
+            FUTAPAY: <span id="totalPay">0</span>đ
         </div>
         <div class="button-group">
             <button type="button" class="cancel-button">Hủy</button>

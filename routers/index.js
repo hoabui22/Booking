@@ -4,7 +4,7 @@ const router = express.Router();
 
 function initWebRoute(app) {
     router.get('/', bookingController.getBooking);
-    router.post('/bookings', bookingController.postBooking);
+    router.post('/', bookingController.postBooking);
 
     return app.use('/', router)
 }

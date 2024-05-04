@@ -1,7 +1,19 @@
 const connectMongo = require('../configs/connectMongo');
 
-let getBooking = (req, res) => {
-    return res.render('index.ejs')
+let getBooking = async (req, res) => {
+    let client;
+    try {
+        client = await connectMongo();
+        const db = client.db();
+        
+        const distinctSelectedSeats = await db.collection('Booking').distinct('selectedSeats');
+        
+        return res.render('index.ejs', { selectedSeats: distinctSelectedSeats, success: "", error: ""});
+    }
+    catch (err) {
+        console.error('Error when searching, please try again!!: ', err);
+        return res.render('index.ejs', {selectedSeats: [], success: "", error: "Error when searching, please try again!!"})
+    }
 }
 
 let postBooking = async (req, res) => {
@@ -30,11 +42,13 @@ let postBooking = async (req, res) => {
 
         console.log(result);
 
-            return res.render('index.ejs')
+        const distinctSelectedSeats = await db.collection('Booking').distinct('selectedSeats');
+
+        return res.render('index.ejs', {selectedSeats: distinctSelectedSeats, success: "Your Seat", error: ""})
     }
     catch (err) {
         console.error('Error when searching, please try again!!: ', err);
-            return res.render('index.ejs')
+        return res.render('index.ejs', {selectedSeats: [], success: "", error: "Error when searching, please try again!!"})
     }
 }
 

@@ -1,22 +1,31 @@
 {
-    "name": "futa-bus",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "start": "node app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.20.2",
-        "dotenv": "^16.4.5",
-        "ejs": "^3.1.10",
-        "express": "^4.19.2",
-        "mongodb": "^6.6.0",
-        "mongoose": "^8.3.3",
-        "morgan": "^1.10.0"
-    }
+  "name": "futa-bus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "mongodb": "^6.6.0",
+    "mongoose": "^8.3.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoabui22/Booking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hoabui22/Booking/issues"
+  },
+  "homepage": "https://github.com/hoabui22/Booking#readme",
+  "description": ""
 }

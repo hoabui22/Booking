@@ -65,15 +65,15 @@ body {
 }
 
 .available {
-  background-color: #6feaf6;
+  background-color: #a5cfff;
 }
 
 .occupied {
-  background-color: #ccc;
+  background-color: #828282;
 }
 
 .selected {
-  background-color: #ff0000;
+  background-color: #ffa7a7;
 }
 
 /* Additional styles for the layout */
@@ -104,15 +104,15 @@ body {
 }
 
 .occupied .color {
-  background-color: #ccc;
+  background-color: #828282;
 }
 
 .available .color {
-  background-color: #6feaf6;
+  background-color: #a5cfff;
 }
 
 .selected .color {
-  background-color: #ff0000;
+  background-color: #ffa7a7;
 }
 
 
@@ -142,12 +142,12 @@ body {
 }
 
 .customer-form{
-  margin-top: 5px;
+  margin-top: -100px;
   border: 1px solid #ccc;
   padding: 10px;
   margin-right: 500px;
   margin-left: 200px;
-  margin-bottom: 100px;
+  margin-bottom: 20px;
 }
 .additional-info{
   margin-right: 10px;
@@ -218,4 +218,26 @@ input[type="email"] {
   border: none; /* Loại bỏ đường viền */
   border-radius: 5px; /* Độ cong viền */
   cursor: pointer; /* Con trỏ khi rê chuột vào */
+}
+
+/* Success Alert */
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+/* Danger Alert */
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Common styles for alerts */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
 }
