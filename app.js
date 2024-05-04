@@ -1,24 +1,28 @@
+const initWebRoute = require('./routers/index.js');
 const express = require('express');
 const path = require('path');
-const connectMongo = require('./connectMongo');
-const indexRouter = require('./routers/index');
-
-const app = express();
-
-app.set('view engine', 'ejs');
+const morgan = require('morgan');
+const ejs = require('ejs');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+const app = express()
+const port = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.set("Views", path.join(__dirname, "Views"));
+app.use(morgan('combined'));
+app.set('view engine', 'ejs')
+app.set("views", path.join(__dirname, "views"));
+app.engine('ejs', ejs.renderFile)
 
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(function (req, res, next) {
+    res.locals.user = req.user
+    next()
+})
 
-// Connect to MongoDB
-connectMongo().then(() => {
-    app.use('/', indexRouter);
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}).catch(err => {
-    console.error('Failed to connect to MongoDB:', err);
-    process.exit(1);
-});
+initWebRoute(app)
+app.listen(port, () => {
+    console.log(`Example app listening on port http://localhost:${port}`)
+})

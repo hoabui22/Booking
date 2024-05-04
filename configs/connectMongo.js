@@ -1,17 +1,17 @@
-const mongoose = require('mongoose');
+const { MongoClient } = require('mongodb')
+
+//let dbConnection
 
 async function connectMongo() {
     try {
-        await mongoose.connect('mongodb://localhost:27017/bookingDB', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log('Đã kết nối đến MongoDB!');
-        return mongoose.connection;
+        const client = new MongoClient('mongodb://127.0.0.1:27017/bookingDB', { useNewUrlParser: true, useUnifiedTopology: true });
+        await client.connect();
+        console.log('Connected to MongoDB');
+        // Trả về client để sử dụng cho các truy vấn khác, nếu cần
+        return client;
     } catch (error) {
-        console.error('Lỗi kết nối MongoDB:', error);
-        throw error;
+        console.error('Error connecting to MongoDB:', error);
     }
 }
 
-module.exports = connectMongo;
+module.exports = connectMongo

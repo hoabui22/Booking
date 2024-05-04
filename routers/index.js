@@ -1,27 +1,11 @@
 const express = require('express');
+const bookingController = require('../controller/bookingController');
 const router = express.Router();
-const Booking = require('../model/booking');
 
-router.get('/', (req, res) => {
-    res.render('index');
-});
+function initWebRoute(app) {
+    router.get('/', bookingController.getBooking);
+    router.post('/bookings', bookingController.postBooking);
 
-router.post('/bookings', async (req, res) => {
-    try {
-        const { fullName, phoneNumber, email, selectedSeats, totalPrice } = req.body;
-        const booking = new Booking({
-            fullName,
-            phoneNumber,
-            email,
-            selectedSeats,
-            totalPrice
-        });
-        await booking.save();
-        res.status(201).send('Booking created successfully');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-module.exports = router;
+    return app.use('/', router)
+}
+module.exports = initWebRoute

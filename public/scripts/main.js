@@ -79,5 +79,47 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault(); // Ngăn chặn hành động mặc định của nút submit
             alert('Vui lòng chấp nhận điều khoản và điều kiện trước khi tiếp tục.');
         }
+        const selectedSeats = document.querySelectorAll('.seat.selected');
+const selectedSeatsCount = selectedSeats.length;
+
+const ticketPrice = selectedSeatsCount * 200; 
+const transactionFee = 0; 
+const totalAmount = ticketPrice + transactionFee;
+
+const fullName = document.getElementById('fullName').value;
+const phoneNumber = document.getElementById('phoneNumber').value;
+const email = document.getElementById('email').value;
+
+var form = document.createElement('form');
+form.method = 'POST';
+form.action = '/bookings';
+
+// Create hidden input fields and set their values
+function addHiddenInput(name, value) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+}
+
+// Add selected seats as an array of strings
+selectedSeats.forEach((seat, index) => {
+    addHiddenInput(`selectedSeats[${index}]`, seat.textContent); // Assuming seat text content holds the seat identifier
+});
+
+// Add total amount
+addHiddenInput('totalPrice', totalAmount);
+
+// Add fullName, phoneNumber, and email
+addHiddenInput('fullName', fullName);
+addHiddenInput('phoneNumber', phoneNumber);
+addHiddenInput('email', email);
+
+// Append form to document body and submit it
+document.body.appendChild(form);
+form.submit();
     });
 });
+
+
