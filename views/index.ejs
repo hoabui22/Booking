@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Website</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <!-- Các ghế -->
+    <div class="container">
+        <div class="seat-rows">
+            <!-- Dãy ghế tầng dưới -->
+            <div class="floor-label-l">
+                <h3>Tầng dưới</h3>
+            <div class="row">
+                <div class="seat available">A1</div>
+                <div class="seat available">A2</div>
+                <div class="seat available">A3</div>
+                <div class="seat available">A4</div>
+                <div class="seat available">A5</div>
+                <div class="seat available">A6</div>
+                <div class="seat available">A7</div>
+                <div class="seat available">A8</div>
+                <div class="seat available">A9</div>
+                <div class="seat available">A10</div>
+                <div class="seat available">A11</div>
+                <div class="seat available">A12</div>
+                <div class="seat available">A13</div>
+                <div class="seat available">A14</div>
+                <div class="seat available">A15</div>
+                <div class="seat available">A16</div>
+                <div class="seat available">A17</div>
+                <div class="seat available">A18</div>
+            </div>
+        </div>
+            <!-- Dãy ghế tầng trên -->
+            <div class="floor-label-r">
+                <h3>Tầng trên</h3>
+            <div class="row">
+                <div class="seat available">B1</div>
+                <div class="seat available">B2</div>
+                <div class="seat available">B3</div>
+                <div class="seat available">B4</div>
+                <div class="seat available">B5</div>
+                <div class="seat available">B6</div>
+                <div class="seat available">B7</div>
+                <div class="seat available">B8</div>
+                <div class="seat available">B9</div>
+                <div class="seat available">B10</div>
+                <div class="seat available">B11</div>
+                <div class="seat available">B12</div>
+                <div class="seat available">B13</div>
+                <div class="seat available">B14</div>
+                <div class="seat available">B15</div>
+                <div class="seat available">B16</div>
+                <div class="seat available">B17</div>
+                <div class="seat available">B18</div>
+            </div>
+        </div>
+    </div>
+    <!-- Bảng chú thích màu -->
+    <div class="showcase">
+        <ul>
+            <li><span class="color occupied"></span> Đã bán</li>
+            <li><span class="color available"></span> Còn trống</li>
+            <li><span class="color selected"></span> Đang chọn</li>
+        </ul>
+    </div>
+    </div>
+    <!-- Booking Details -->
+    <div class="details-container">
+        <!-- Booking Details -->
+        <div class="booking-details">
+            <h2>Booking Details</h2>
+            <p>Trip: Rach Gia => Sai Gon</p>
+            <p>Departure Time: 04:00 09-05-2024</p>
+            <p>Số lượng ghế: <span id="countSeat">None</span></p>
+            <p>Số ghế: <span id="nameSeat">None</span></p>
+            <p>Total Price: $<span id="totalPrice">0</span></p>
+        </div>
+        <!-- Payment Details -->
+        <div class="payment-details">
+            <h3>Payment Details</h3>
+            <p>Ticket Price: $<span id="ticketPrice">0</span></p>
+            <p>Transaction Fee: $<span id="transactionFee">0</span></p>
+            <p>Total Amount: $<span id="totalAmount">0</span></p>
+        </div>
+    </div>
+
+    <!-- Customer Information Form -->
+    <div class="customer-form">
+        <h2>Thông tin khách hàng</h2>
+        <form action="/booking" method="POST">
+            <label for="fullName">Họ và tên</label><br>
+            <input type="text" id="fullName" name="fullName" required><br>
+            <label for="phoneNumber">Số điện thoại</label><br>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+            <label for="agreeTerms">Chấp nhận điều khoản đặt vé & chính sách bảo mật thông tin của FUTABusline</label><br>
+        </form>
+        <div class="additional-info">
+            <p><strong>ĐIỀU KHOẢN & LƯU Ý</strong></p>
+            <p>(*) Quý khách vui lòng có mặt tại bến xuất phát của xe trước ít nhất 30 phút giờ xe khởi hành, mang theo thông báo đã thanh toán vé thành công có chứa mã vé được gửi từ hệ thống FUTA BUS LINE. Vui lòng liên hệ Trung tâm tổng đài 1900 6067 để được hỗ trợ.
+                (*) Nếu quý khách có nhu cầu trung chuyển, vui lòng liên hệ Tổng đài trung chuyển 1900 6918 trước khi đặt vé. Chúng tôi không đón/trung chuyển tại những điểm xe trung chuyển không thể tới được.</p>
+        </div>
+    </div>
+    <!-- Pickup and Drop-off Information Form -->
+    <div class="pickup-form">
+        <h2>Pickup and Drop-off Information</h2>
+        <form action="/pickup-dropoff" method="POST">
+            <label for="pickupLocation">Pickup Location:</label><br>
+            <select id="pickupLocation" name="pickupLocation" required>
+                <option value="Rach Gia">Rach Gia</option>
+                <option value="Another Location">Another Location</option>
+            </select><br>
+            <div class="dropoff">
+                <label for="dropoffLocation">Drop-off Location:</label><br>
+                    <select id="dropoffLocation" name="dropoffLocation" required>
+                    <option value="Sai Gon">Sai Gon</option>
+                    <option value="Another Location">Another Location</option>
+                </select>
+            <br></div>
+            <p>(*)Quý khách vui lòng có mặt tại Bến xe/Văn Phòng Rạch Sỏi Trước 07:45 04/05/2024 để được trung chuyển hoặc kiểm tra thông tin trước khi lên xe.</p>
+        </form>
+        <!-- Hiển thị giá tiền -->
+        <div class="price-display">
+            Total Pay: $<span id="totalPay">0</span>
+        </div>
+        <div class="button-group">
+            <button type="button" class="cancel-button">Hủy</button>
+            <button type="submit" class="submit-button">Thanh toán</button>
+        </div>
+    </div>
+    <script src="/scripts/main.js"></script>
+</body>
+</html>

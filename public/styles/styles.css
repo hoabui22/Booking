@@ -1,0 +1,221 @@
+/* Reset CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; 
+  border: 2px solid #ccc; /* Đường viền 2px dày, màu xám */
+  padding: 10px; /* Tạo khoảng cách giữa đường viền và các phần tử bên trong */
+  border-radius: 5px; /* Làm tròn góc của đường viền */
+  margin-right: 500px;
+  margin-left: 200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+
+.seat-rows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.row{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 10px;
+}
+
+.floor-label-l {
+  margin-right: 50px;
+  margin-left: 5px;
+  margin-top: 60px;
+}
+
+.floor-label-r {
+  margin-right: 50px;
+  margin-top: 60px;
+}
+
+
+.seats {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.seat {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.available {
+  background-color: #6feaf6;
+}
+
+.occupied {
+  background-color: #ccc;
+}
+
+.selected {
+  background-color: #ff0000;
+}
+
+/* Additional styles for the layout */
+.left-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.left-row .row,
+.right-row .row {
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
+.showcase ul li .color {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.occupied .color {
+  background-color: #ccc;
+}
+
+.available .color {
+  background-color: #6feaf6;
+}
+
+.selected .color {
+  background-color: #ff0000;
+}
+
+
+.details-container {
+  margin-left: 1000px;
+  margin-top: -520px;
+  margin-bottom: 300px ;
+}
+
+.booking-details{
+  margin-top: 20px;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 200px;
+  margin-left: 50px;
+  margin-bottom: 20px;
+}
+
+.payment-details{
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 200px;
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.customer-form{
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 500px;
+  margin-left: 200px;
+  margin-bottom: 100px;
+}
+.additional-info{
+  margin-right: 10px;
+  margin-left: 400px;
+  margin-bottom: 50px;
+  margin-top: -230px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+    width: 300px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+}
+
+.pickup-form{
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 500px;
+  margin-left: 200px;
+  margin-bottom: 10px;
+}
+
+.pickup-form select {
+  width: 250px; /* Điều chỉnh độ rộng của các khung chọn */
+  height: 40px; /* Điều chỉnh chiều cao của các khung chọn */
+  font-size: 16px; /* Điều chỉnh kích thước chữ trong các khung chọn */
+}
+
+.dropoff {
+  margin-left: 500px;
+  margin-top: -58px;
+  margin-bottom: 10px;
+}
+
+.price-display {
+  margin-bottom: 10px; /* Khoảng cách giữa giá tiền và nội dung trước */
+}
+
+.button-group {
+  margin-top: 10px; /* Khoảng cách giữa nút và phần tử trước */
+  text-align: right; /* Căn phải nút */
+}
+
+.submit-button,
+.cancel-button {
+  margin-left: 10px; /* Khoảng cách giữa các nút */
+}
+
+.cancel-button {
+  font-size: 18px; /* Kích thước chữ */
+  padding: 10px 20px; /* Kích thước nút */
+  background-color: #ffffff; /* Màu nền */
+  color: #ff7300; /* Màu chữ */
+  border: none; /* Loại bỏ đường viền */
+  border-radius: 5px; /* Độ cong viền */
+  cursor: pointer; /* Con trỏ khi rê chuột vào */
+}
+
+/* Định dạng nút Thanh toán */
+.submit-button {
+  font-size: 18px; /* Kích thước chữ */
+  padding: 10px 20px; /* Kích thước nút */
+  background-color: #ff7300; /* Màu nền */
+  color: #ffffff; /* Màu chữ */
+  border: none; /* Loại bỏ đường viền */
+  border-radius: 5px; /* Độ cong viền */
+  cursor: pointer; /* Con trỏ khi rê chuột vào */
+}
